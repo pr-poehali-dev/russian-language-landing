@@ -111,7 +111,7 @@ export default function Index() {
         <div className="relative z-10 text-center px-6 max-w-md w-full">
           <div className="mb-8">
             <div className="w-20 h-20 mx-auto mb-6 border-2 border-[#F5D060]/60 rounded-full flex items-center justify-center">
-              <span className="text-3xl">🍷</span>
+              <span className="font-oswald text-[#F5D060] text-2xl font-bold tracking-tight leading-none">18+</span>
             </div>
             <h1 className="font-oswald text-4xl md:text-5xl text-white uppercase tracking-[0.15em] mb-3">
               Добро пожаловать
