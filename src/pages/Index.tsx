@@ -1,56 +1,55 @@
 import { useState, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
+const DICKFON_DESCRIPTION = "Хотите удивить друзей и взорвать любую вечеринку? Представляем вашему вниманию самый скандальный и веселый гаджет — микрофон в виде члена! Эта модель, которую в народе ласково называют «Писькафон» или Dickfon, создана для тех, кто любит петь громко и смеяться от души. Это не просто шутка, а полноценный микрофон-фаллос, который отлично справляется со своими прямыми обязанностями. Благодаря микрофону в форме члена ваш вокал будет звучать чисто и громко, а необычный дизайн гарантированно станет хитом вечера.";
+
 const PRODUCTS = [
   {
     id: 1,
-    name: "Золотой Резерв",
-    category: "Премиум коллекция",
-    price: "4 800 ₽",
-    volume: "700 мл · 40%",
+    name: "DICKFON для Караоке",
+    category: "Хит вечеринок",
+    price: "15 000 ₽",
+    volume: "Встроенный динамик · Беспроводной",
     badge: "Хит",
     color: "#D4A843",
-    description:
-      "Выдержан в дубовых бочках не менее 12 лет. Мягкий, насыщенный вкус с нотами ванили, карамели и сухофруктов. Послевкусие долгое, согревающее. Идеально подходит для особых случаев и торжественных вечеров.",
+    description: DICKFON_DESCRIPTION,
     details: [
-      { label: "Выдержка", value: "12 лет" },
-      { label: "Крепость", value: "40%" },
-      { label: "Объём", value: "700 мл" },
-      { label: "Страна", value: "Россия" },
+      { label: "Тип", value: "Для караоке" },
+      { label: "Подключение", value: "Bluetooth" },
+      { label: "Батарея", value: "До 6 часов" },
+      { label: "Подарок", value: "Упаковка" },
     ],
   },
   {
     id: 2,
-    name: "Серебряный Туман",
-    category: "Классика",
-    price: "2 200 ₽",
-    volume: "500 мл · 38%",
+    name: "DICKFON Петличка",
+    category: "Для контента",
+    price: "12 000 ₽",
+    volume: "Петличный микрофон · Компактный",
     badge: "Новинка",
     color: "#A8C4D4",
-    description:
-      "Лёгкий и кристально чистый напиток с тройной фильтрацией. Деликатный вкус с цветочными нотами и едва уловимым цитрусовым оттенком. Отлично сочетается с любыми миксерами.",
+    description: DICKFON_DESCRIPTION,
     details: [
-      { label: "Фильтрация", value: "Тройная" },
-      { label: "Крепость", value: "38%" },
-      { label: "Объём", value: "500 мл" },
-      { label: "Страна", value: "Россия" },
+      { label: "Тип", value: "Петличка" },
+      { label: "Подключение", value: "3.5 мм / USB-C" },
+      { label: "Длина", value: "120 см" },
+      { label: "Подарок", value: "Упаковка" },
     ],
   },
   {
     id: 3,
-    name: "Тёмный Граф",
-    category: "Купажированный",
-    price: "3 500 ₽",
-    volume: "700 мл · 42%",
+    name: "DICKFON Эксклюзив",
+    category: "Лимитированная серия",
+    price: "По запросу",
+    volume: "Премиум · Ограниченный тираж",
     badge: "Лимитед",
     color: "#C47B3A",
-    description:
-      "Смелый купаж с глубоким тёмным характером. Богатый аромат специй, шоколада и дымных нот. Создан для ценителей, которые не боятся насыщенного вкуса и крепкого характера.",
+    description: DICKFON_DESCRIPTION,
     details: [
-      { label: "Тип", value: "Купаж" },
-      { label: "Крепость", value: "42%" },
-      { label: "Объём", value: "700 мл" },
-      { label: "Страна", value: "Россия" },
+      { label: "Тип", value: "Эксклюзив" },
+      { label: "Серия", value: "Лимитированная" },
+      { label: "Комплект", value: "Полный" },
+      { label: "Подарок", value: "VIP упаковка" },
     ],
   },
 ];
@@ -175,7 +174,7 @@ export default function Index() {
             onClick={() => scrollTo(homeRef)}
             className="font-oswald text-xl tracking-widest text-[#F5D060] uppercase hover:opacity-80 transition-opacity"
           >
-            Элит·Лавка
+            DICKFON
           </button>
 
           <div className="hidden md:flex items-center gap-8">
@@ -239,7 +238,7 @@ export default function Index() {
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <p className="font-cormorant text-[#F5D060] text-lg italic tracking-widest mb-4">
-            — коллекция избранного —
+            — самый скандальный гаджет —
           </p>
           <h1
             className="font-oswald text-6xl md:text-8xl lg:text-9xl uppercase tracking-tight leading-none mb-6"
@@ -249,12 +248,12 @@ export default function Index() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            Элитные
+            DICK
             <br />
-            <span style={{ WebkitTextFillColor: "white" }}>Напитки</span>
+            <span style={{ WebkitTextFillColor: "white" }}>FON</span>
           </h1>
           <p className="font-rubik text-white/60 text-lg md:text-xl max-w-lg mx-auto mb-10">
-            Отборные напитки для ценителей. Строгий контроль качества, подлинные сертификаты.
+            Идеальный подарок для мальчишника, девичника, корпоратива или Дня рождения. Взорви вечеринку с «Писькафоном»!
           </p>
           <button
             onClick={() => scrollTo(productsRef)}
@@ -274,9 +273,9 @@ export default function Index() {
       <section ref={productsRef} className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="font-cormorant text-[#F5D060] italic text-lg mb-3">наша коллекция</p>
+            <p className="font-cormorant text-[#F5D060] italic text-lg mb-3">наши модели</p>
             <h2 className="font-oswald text-5xl md:text-6xl uppercase tracking-tight text-white">
-              Товары
+              Dickfon
             </h2>
             <div className="w-16 h-px bg-[#F5D060] mx-auto mt-6" />
           </div>
@@ -301,7 +300,7 @@ export default function Index() {
                       boxShadow: `0 0 40px ${product.color}25`,
                     }}
                   >
-                    🍶
+                    🎤
                   </div>
                   <span className="absolute top-4 right-4 font-oswald text-xs uppercase tracking-widest bg-[#F5D060] text-[#1a0a2e] px-3 py-1 rounded-full">
                     {product.badge}
