@@ -4,14 +4,14 @@ import AgeGate, { AgeDenied } from "@/components/dickfon/AgeGate";
 import Navbar from "@/components/dickfon/Navbar";
 import ProductsSection from "@/components/dickfon/ProductsSection";
 import ProductModal from "@/components/dickfon/ProductModal";
-import { PRODUCTS } from "@/components/dickfon/data";
+import { PRODUCTS, DAYS, MONTHS, YEARS } from "@/components/dickfon/data";
 
 export default function Index() {
   const [ageVerified, setAgeVerified] = useState(false);
   const [ageDenied, setAgeDenied] = useState(false);
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
+  const [dayIndex, setDayIndex] = useState(0);
+  const [monthIndex, setMonthIndex] = useState(0);
+  const [yearIndex, setYearIndex] = useState(10);
   const [activeProduct, setActiveProduct] = useState<number | null>(null);
 
   const homeRef = useRef<HTMLElement>(null);
@@ -19,12 +19,14 @@ export default function Index() {
   const contactsRef = useRef<HTMLElement>(null);
 
   const handleAgeCheck = () => {
-    if (!day || !month || !year || year.length < 4) return;
-    const birth = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    const d = DAYS[dayIndex];
+    const m = monthIndex + 1;
+    const y = YEARS[yearIndex];
+    const birth = new Date(y, m - 1, d);
     const today = new Date();
     let age = today.getFullYear() - birth.getFullYear();
-    const m = today.getMonth() - birth.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+    const diff = today.getMonth() - birth.getMonth();
+    if (diff < 0 || (diff === 0 && today.getDate() < birth.getDate())) age--;
     if (age >= 18) {
       setAgeVerified(true);
     } else {
@@ -42,12 +44,12 @@ export default function Index() {
   if (!ageVerified) {
     return (
       <AgeGate
-        day={day}
-        month={month}
-        year={year}
-        onDayChange={setDay}
-        onMonthChange={setMonth}
-        onYearChange={setYear}
+        dayIndex={dayIndex}
+        monthIndex={monthIndex}
+        yearIndex={yearIndex}
+        onDayChange={setDayIndex}
+        onMonthChange={setMonthIndex}
+        onYearChange={setYearIndex}
         onConfirm={handleAgeCheck}
       />
     );
