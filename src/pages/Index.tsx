@@ -7,7 +7,7 @@ import ProductModal from "@/components/dickfon/ProductModal";
 import { PRODUCTS, DAYS, MONTHS, YEARS } from "@/components/dickfon/data";
 
 export default function Index() {
-  const [ageVerified, setAgeVerified] = useState(false);
+  const [ageVerified, setAgeVerified] = useState(() => sessionStorage.getItem("ageVerified") === "true");
   const [ageDenied, setAgeDenied] = useState(false);
   const [dayIndex, setDayIndex] = useState(0);
   const [monthIndex, setMonthIndex] = useState(0);
@@ -28,6 +28,7 @@ export default function Index() {
     const diff = today.getMonth() - birth.getMonth();
     if (diff < 0 || (diff === 0 && today.getDate() < birth.getDate())) age--;
     if (age >= 18) {
+      sessionStorage.setItem("ageVerified", "true");
       setAgeVerified(true);
     } else {
       setAgeDenied(true);
