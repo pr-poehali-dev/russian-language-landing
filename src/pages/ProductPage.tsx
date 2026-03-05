@@ -2,18 +2,23 @@ import { useParams, useNavigate } from "react-router-dom";
 import { PRODUCTS } from "@/components/dickfon/data";
 import Navbar from "@/components/dickfon/Navbar";
 import Icon from "@/components/ui/icon";
-import { useRef } from "react";
 
 export default function ProductPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const product = PRODUCTS.find((p) => p.slug === slug);
 
-  const dummyRef = useRef<HTMLElement>(null);
+  const goToSection = (sectionId: string) => {
+    navigate("/");
+    setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    }, 400);
+  };
+
   const navItems = [
-    { label: "Главная", ref: dummyRef, onClick: () => navigate("/") },
-    { label: "Товары", ref: dummyRef, onClick: () => navigate("/#products") },
-    { label: "Контакты", ref: dummyRef, onClick: () => navigate("/#contacts") },
+    { label: "Главная", onClick: () => navigate("/") },
+    { label: "Товары", onClick: () => goToSection("products-section") },
+    { label: "Контакты", onClick: () => goToSection("contacts-section") },
   ];
 
   if (!product) {

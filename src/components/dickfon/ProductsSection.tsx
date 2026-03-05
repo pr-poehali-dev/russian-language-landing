@@ -63,7 +63,7 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
       </section>
 
       {/* PRODUCTS */}
-      <section ref={productsRef} className="py-24 px-6">
+      <section id="products-section" ref={productsRef} className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="font-cormorant text-[#F5D060] italic text-lg mb-3">наши модели</p>

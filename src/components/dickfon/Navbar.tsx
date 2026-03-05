@@ -3,7 +3,8 @@ import Icon from "@/components/ui/icon";
 
 interface NavItem {
   label: string;
-  ref: React.RefObject<HTMLElement>;
+  ref?: React.RefObject<HTMLElement>;
+  onClick?: () => void;
 }
 
 interface NavbarProps {
@@ -13,16 +14,20 @@ interface NavbarProps {
 export default function Navbar({ items }: NavbarProps) {
   const [navOpen, setNavOpen] = useState(false);
 
-  const scrollTo = (ref: React.RefObject<HTMLElement>) => {
+  const handleClick = (item: NavItem) => {
     setNavOpen(false);
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    if (item.onClick) {
+      item.onClick();
+    } else if (item.ref) {
+      item.ref.current?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a0a2e]/90 backdrop-blur-md border-b border-white/10">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <button
-          onClick={() => scrollTo(items[0].ref)}
+          onClick={() => handleClick(items[0])}
           className="font-oswald text-xl tracking-widest text-[#F5D060] uppercase hover:opacity-80 transition-opacity"
         >
           DICKFON
@@ -32,7 +37,7 @@ export default function Navbar({ items }: NavbarProps) {
           {items.map((item) => (
             <button
               key={item.label}
-              onClick={() => scrollTo(item.ref)}
+              onClick={() => handleClick(item)}
               className="font-rubik text-sm text-white/70 hover:text-[#F5D060] transition-colors uppercase tracking-widest"
             >
               {item.label}
@@ -53,7 +58,7 @@ export default function Navbar({ items }: NavbarProps) {
           {items.map((item) => (
             <button
               key={item.label}
-              onClick={() => scrollTo(item.ref)}
+              onClick={() => handleClick(item)}
               className="font-rubik text-sm text-white/70 hover:text-[#F5D060] transition-colors uppercase tracking-widest text-left"
             >
               {item.label}
