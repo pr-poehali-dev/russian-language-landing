@@ -89,7 +89,7 @@ export default function ProductPage() {
               <span className="font-oswald text-3xl text-[#F5D060]">{product.price}</span>
               <a
                 href="/#contacts"
-                onClick={(e) => { e.preventDefault(); navigate("/"); setTimeout(() => document.getElementById("contacts-section")?.scrollIntoView({ behavior: "smooth" }), 300); }}
+                onClick={(e) => { e.preventDefault(); navigate("/"); setTimeout(() => { document.getElementById("contacts-section")?.scrollIntoView({ behavior: "smooth" }); }, 400); }}
                 className="bg-[#F5D060] hover:bg-[#F0C830] text-[#1a0a2e] font-oswald text-base uppercase tracking-widest px-8 py-3 rounded-xl transition-all hover:shadow-[0_0_30px_rgba(245,208,96,0.4)]"
               >
                 Заказать
