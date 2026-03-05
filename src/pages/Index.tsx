@@ -1,63 +1,110 @@
 import { useState, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
-const DICKFON_DESCRIPTION = "Хотите удивить друзей и взорвать любую вечеринку? Представляем вашему вниманию самый скандальный и веселый гаджет — микрофон в виде члена! Эта модель, которую в народе ласково называют «Писькафон» или Dickfon, создана для тех, кто любит петь громко и смеяться от души. Это не просто шутка, а полноценный микрофон-фаллос, который отлично справляется со своими прямыми обязанностями. Благодаря микрофону в форме члена ваш вокал будет звучать чисто и громко, а необычный дизайн гарантированно станет хитом вечера.";
+const DESC_KARAOKE = `Хотите удивить друзей и взорвать любую вечеринку? Представляем вашему вниманию самый скандальный и веселый гаджет — микрофон в виде члена! Эта модель, которую называют DICKFON, создана для тех, кто любит петь громко и смеяться от души.
+
+Это не просто шутка, а полноценный микрофон-фаллос, который отлично справляется со своими прямыми обязанностями. Благодаря микрофону в форме члена ваш вокал будет звучать чисто и громко, а необычный дизайн гарантированно станет хитом вечера.
+
+Почему стоит купить микрофон-член:
+
+Идеальный подарок: Лучший вариант для мальчишника, девичника, корпоратива или Дня рождения.
+
+Качество звука: Встроенный динамик и чувствительная головка превращают пение в настоящее шоу.
+
+Универсальность: Работает без проводов, легко подключается к колонке или другому оборудованию.
+
+Подарите себе море эмоций с этим невероятным микрофоном в виде члена. Забудьте о скучных подарках — с нашим DICKFON'ом караоке заиграет новыми красками!`;
+
+const DESC_PETLICHKA = `Мечтаете, чтобы ваши подписчики не только слушали, но и падали со смеху? Вам нужна петличка в виде члена! Этот провокационный аксессуар превращает обычную запись интервью или стрима в настоящий фарс. Представьте лицо гостя, которому вы прикрепляете на лацкан микрофон-петличку член: это видео точно станет вирусным!
+
+Это не просто игрушка, а полноценная петличка-член, которая обеспечивает отличное качество звука. Забудьте о скучных гарнитурах — микрофон петличка в форме члена сразу выделит вас из толпы блогеров. Провод длинный, звук чистый, а повод для шуток бесконечный.
+
+Почему стоит купить микрофон петличку член:
+
+Для контента: Лучший способ заставить зрителя нажать на видео.
+
+Качество: Чуткий микрофон с хорошим шумоподавлением.
+
+Подарок: Идеальный сюрприз для видеографа, журналиста или тиктокера.
+
+Хотите удивить коллегу или добавить перчинки в свой блог? Петличка в виде члена — ваш выбор!`;
+
+const DESC_EXCLUSIVE = `Представляем вам уникальный продукт, не имеющий аналогов на рынке, — эксклюзивный микрофон в виде члена, создаваемый по индивидуальному заказу. Это не просто сувенир или игрушка для вечеринок. Это высокотехнологичный прибор студийного уровня, воплощённый в скульптурной форме, которая ломает все шаблоны. Если вы ищете по-настоящему персонализированный подарок для звезды сцены, топ-блогера или коллекционера, этот микрофон-фаллос на заказ станет идеальным выбором.
+
+Забудьте о конвейерных безделушках. Мы предлагаем вам стать соавтором этого произведения. Вы получаете полную свободу творчества: мы воплотим микрофон в форме члена любой конфигурации, которую вы пожелаете.
+
+Индивидуальные параметры (Кастомизация):
+
+Размер: От миниатюрных (5 см) до монументальных. Вы выбираете эргономику и масштаб.
+
+Форма: Максимальный реализм, абстракция, гипербола или точная копия — мы работаем по вашим референсам и чертежам.
+
+Цвет: Любая палитра Pantone. Натуральные телесные оттенки, кислотные неоновые цвета, металлик, хром, градиенты и даже имитация дорогих пород дерева или камня.
+
+Материалы: Медицинский силикон, высокопрочный пластик, эпоксидная смола, а также эксклюзивные вставки (стразы Swarovski, сусальное золото).
+
+Но главное — это содержание. Мы настаиваем на том, что настоящий артист достоин настоящего звука. Поэтому в качестве «начинки» для вашего кастомного микрофона-члена мы предлагаем только лучшее профессиональное оборудование:
+
+Выбор профессионального уровня:
+
+Студийный конденсаторный капсюль: Для кристально чистого звука и записи вокала высочайшего качества.
+
+Беспроводная система: Интеграция профессиональных систем (уточняется индивидуально).
+
+Разъёмы: Совместимость с любым студийным или концертным оборудованием (XLR, Jack, беспроводные).
+
+Этот микрофон в виде члена премиум-класса создаётся в единственном экземпляре. От идеи до реализации — каждый этап контролируется мастером. Если вам нужен не просто подарок, а арт-объект с безупречным звучанием, микрофон-член на заказ — ваш эксклюзивный выбор.`;
 
 const PRODUCTS = [
   {
     id: 1,
     name: "DICKFON для Караоке",
+    seoTitle: "Микрофон в виде члена для караоке | Самый веселый подарок на вечеринку",
     category: "Хит вечеринок",
     price: "15 000 ₽",
     volume: "Встроенный динамик · Беспроводной",
     badge: "Хит",
     color: "#D4A843",
-    description: DICKFON_DESCRIPTION,
-    details: [
-      { label: "Тип", value: "Для караоке" },
-      { label: "Подключение", value: "Bluetooth" },
-      { label: "Батарея", value: "До 6 часов" },
-      { label: "Подарок", value: "Упаковка" },
-    ],
+    description: DESC_KARAOKE,
   },
   {
     id: 2,
     name: "DICKFON Петличка",
+    seoTitle: "Микрофон петличка в виде члена | Смешная петличка для видео | Необычный подарок блогеру",
     category: "Для контента",
     price: "12 000 ₽",
     volume: "Петличный микрофон · Компактный",
     badge: "Новинка",
     color: "#A8C4D4",
-    description: DICKFON_DESCRIPTION,
-    details: [
-      { label: "Тип", value: "Петличка" },
-      { label: "Подключение", value: "3.5 мм / USB-C" },
-      { label: "Длина", value: "120 см" },
-      { label: "Подарок", value: "Упаковка" },
-    ],
+    description: DESC_PETLICHKA,
   },
   {
     id: 3,
     name: "DICKFON Эксклюзив",
+    seoTitle: "Эксклюзивный кастомный микрофон в виде члена на заказ | Индивидуальное изготовление | Премиальное студийное качество",
     category: "Лимитированная серия",
     price: "По запросу",
     volume: "Премиум · Ограниченный тираж",
     badge: "Лимитед",
     color: "#C47B3A",
-    description: DICKFON_DESCRIPTION,
-    details: [
-      { label: "Тип", value: "Эксклюзив" },
-      { label: "Серия", value: "Лимитированная" },
-      { label: "Комплект", value: "Полный" },
-      { label: "Подарок", value: "VIP упаковка" },
-    ],
+    description: DESC_EXCLUSIVE,
   },
 ];
+
+const DAYS = Array.from({ length: 31 }, (_, i) => i + 1);
+const MONTHS = [
+  "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+  "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь",
+];
+const currentYear = new Date().getFullYear();
+const YEARS = Array.from({ length: 100 }, (_, i) => currentYear - 10 - i);
 
 export default function Index() {
   const [ageVerified, setAgeVerified] = useState(false);
   const [ageDenied, setAgeDenied] = useState(false);
-  const [birthDate, setBirthDate] = useState("");
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
   const [activeProduct, setActiveProduct] = useState<number | null>(null);
   const [navOpen, setNavOpen] = useState(false);
 
@@ -70,9 +117,14 @@ export default function Index() {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToContacts = () => {
+    setActiveProduct(null);
+    contactsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleAgeCheck = () => {
-    if (!birthDate) return;
-    const birth = new Date(birthDate);
+    if (!day || !month || !year) return;
+    const birth = new Date(parseInt(year), parseInt(month), parseInt(day));
     const today = new Date();
     let age = today.getFullYear() - birth.getFullYear();
     const m = today.getMonth() - birth.getMonth();
@@ -83,6 +135,8 @@ export default function Index() {
       setAgeDenied(true);
     }
   };
+
+  const isReady = day && month && year;
 
   if (ageDenied) {
     return (
@@ -116,37 +170,71 @@ export default function Index() {
               Добро пожаловать
             </h1>
             <p className="font-cormorant text-[#F5D060] text-xl italic">
-              Магазин элитных напитков
+              DICKFON — самый скандальный гаджет
             </p>
           </div>
 
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
             <p className="font-rubik text-white/80 text-sm mb-6 leading-relaxed">
-              Данный сайт содержит информацию об алкогольной продукции.
-              <br />
               Пожалуйста, подтвердите свой возраст.
             </p>
 
-            <div className="mb-2 text-left">
-              <label className="font-oswald text-[#F5D060]/80 text-xs uppercase tracking-widest mb-2 block">
+            <div className="mb-6 text-left">
+              <label className="font-oswald text-[#F5D060]/80 text-xs uppercase tracking-widest mb-3 block">
                 Дата рождения
               </label>
-              <input
-                type="date"
-                value={birthDate}
-                onChange={(e) => setBirthDate(e.target.value)}
-                max={new Date().toISOString().split("T")[0]}
-                className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white font-rubik text-base outline-none focus:border-[#F5D060]/60 focus:bg-white/15 transition-all [color-scheme:dark]"
-              />
+              <div className="grid grid-cols-3 gap-3">
+                <div className="flex flex-col">
+                  <span className="font-rubik text-white/40 text-xs mb-1 text-center">День</span>
+                  <div className="relative">
+                    <select
+                      value={day}
+                      onChange={(e) => setDay(e.target.value)}
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white font-rubik text-base outline-none focus:border-[#F5D060]/60 focus:bg-white/15 transition-all appearance-none cursor-pointer [color-scheme:dark]"
+                    >
+                      <option value="" disabled>—</option>
+                      {DAYS.map((d) => (
+                        <option key={d} value={d}>{d}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-rubik text-white/40 text-xs mb-1 text-center">Месяц</span>
+                  <div className="relative">
+                    <select
+                      value={month}
+                      onChange={(e) => setMonth(e.target.value)}
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white font-rubik text-base outline-none focus:border-[#F5D060]/60 focus:bg-white/15 transition-all appearance-none cursor-pointer [color-scheme:dark]"
+                    >
+                      <option value="" disabled>—</option>
+                      {MONTHS.map((m, i) => (
+                        <option key={i} value={i}>{m}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-rubik text-white/40 text-xs mb-1 text-center">Год</span>
+                  <div className="relative">
+                    <select
+                      value={year}
+                      onChange={(e) => setYear(e.target.value)}
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white font-rubik text-base outline-none focus:border-[#F5D060]/60 focus:bg-white/15 transition-all appearance-none cursor-pointer [color-scheme:dark]"
+                    >
+                      <option value="" disabled>—</option>
+                      {YEARS.map((y) => (
+                        <option key={y} value={y}>{y}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <p className="font-rubik text-white/40 text-xs mb-6 text-left">
-              Формат: день / месяц / год
-            </p>
 
             <button
               onClick={handleAgeCheck}
-              disabled={!birthDate}
+              disabled={!isReady}
               className="w-full bg-[#F5D060] hover:bg-[#F0C830] disabled:opacity-40 disabled:cursor-not-allowed text-[#1a0a2e] font-oswald text-lg uppercase tracking-widest py-4 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(245,208,96,0.4)]"
             >
               Подтвердить возраст
@@ -154,7 +242,7 @@ export default function Index() {
           </div>
 
           <p className="font-rubik text-white/30 text-xs mt-6">
-            Продажа алкоголя лицам до 18 лет запрещена
+            Сайт предназначен для лиц старше 18 лет
           </p>
         </div>
       </div>
@@ -253,7 +341,7 @@ export default function Index() {
             <span style={{ WebkitTextFillColor: "white" }}>FON</span>
           </h1>
           <p className="font-rubik text-white/60 text-lg md:text-xl max-w-lg mx-auto mb-10">
-            Идеальный подарок для мальчишника, девичника, корпоратива или Дня рождения. Взорви вечеринку с «Писькафоном»!
+            Идеальный подарок для мальчишника, девичника, корпоратива или Дня рождения. Взорви вечеринку с DICKFON!
           </p>
           <button
             onClick={() => scrollTo(productsRef)}
@@ -341,11 +429,11 @@ export default function Index() {
             <div className="w-16 h-px bg-[#F5D060] mx-auto mt-6" />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: "Phone", label: "Телефон", value: "+7 (800) 123-45-67", sub: "Пн–Вс, 9:00–22:00" },
-              { icon: "MapPin", label: "Адрес", value: "Москва, ул. Арбат, 12", sub: "Самовывоз доступен" },
-              { icon: "Mail", label: "Email", value: "info@elitlavka.ru", sub: "Ответим за 2 часа" },
+              { icon: "Phone", label: "Телефон", value: "+7 (993) 103-07-83", sub: "Круглосуточно, без выходных" },
+              { icon: "Globe", label: "Где найти", value: "Ищите DICKFON в сети", sub: "Интернет-магазин" },
+              { icon: "Mail", label: "Email", value: "dickfon88@gmail.com", sub: "Ответим быстро" },
             ].map((c) => (
               <div
                 key={c.label}
@@ -360,39 +448,13 @@ export default function Index() {
               </div>
             ))}
           </div>
-
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-            <h3 className="font-oswald text-2xl uppercase tracking-widest text-white mb-6 text-center">
-              Написать нам
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4 mb-4">
-              <input
-                type="text"
-                placeholder="Ваше имя"
-                className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white font-rubik text-sm placeholder-white/30 outline-none focus:border-[#F5D060]/60 transition-all"
-              />
-              <input
-                type="tel"
-                placeholder="Телефон"
-                className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white font-rubik text-sm placeholder-white/30 outline-none focus:border-[#F5D060]/60 transition-all"
-              />
-            </div>
-            <textarea
-              placeholder="Ваш вопрос или заказ..."
-              rows={4}
-              className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white font-rubik text-sm placeholder-white/30 outline-none focus:border-[#F5D060]/60 transition-all resize-none mb-4"
-            />
-            <button className="w-full bg-[#F5D060] hover:bg-[#F0C830] text-[#1a0a2e] font-oswald text-base uppercase tracking-widest py-4 rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(245,208,96,0.4)]">
-              Отправить
-            </button>
-          </div>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="border-t border-white/10 py-8 px-6 text-center">
         <p className="font-rubik text-white/30 text-sm">
-          © 2024 Элит·Лавка — Продажа алкоголя лицам до 18 лет запрещена
+          Вся информация на сайте охраняется авторским правом, копирование запрещено
         </p>
       </footer>
 
@@ -420,7 +482,7 @@ export default function Index() {
                 background: `radial-gradient(circle at center, ${selectedProduct.color}25 0%, #1a0a2e 80%)`,
               }}
             >
-              <span className="text-7xl">🍶</span>
+              <span className="text-7xl">🎤</span>
               <span className="absolute top-4 left-4 font-oswald text-xs uppercase tracking-widest bg-[#F5D060] text-[#1a0a2e] px-3 py-1 rounded-full">
                 {selectedProduct.badge}
               </span>
@@ -430,29 +492,21 @@ export default function Index() {
               <p className="font-rubik text-white/40 text-xs uppercase tracking-widest mb-1">
                 {selectedProduct.category}
               </p>
-              <h2 className="font-oswald text-4xl uppercase tracking-wide text-white mb-2">
-                {selectedProduct.name}
+              <h2 className="font-oswald text-3xl uppercase tracking-wide text-white mb-1">
+                {selectedProduct.seoTitle}
               </h2>
               <p className="font-rubik text-white/50 text-sm mb-6">{selectedProduct.volume}</p>
 
-              <p className="font-rubik text-white/75 text-base leading-relaxed mb-8">
+              <div className="font-rubik text-white/75 text-base leading-relaxed mb-8 whitespace-pre-line">
                 {selectedProduct.description}
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 mb-8">
-                {selectedProduct.details.map((d) => (
-                  <div key={d.label} className="bg-white/5 border border-white/10 rounded-xl p-4">
-                    <p className="font-rubik text-white/40 text-xs uppercase tracking-widest mb-1">
-                      {d.label}
-                    </p>
-                    <p className="font-oswald text-white text-lg">{d.value}</p>
-                  </div>
-                ))}
               </div>
 
               <div className="flex items-center justify-between">
                 <span className="font-oswald text-3xl text-[#F5D060]">{selectedProduct.price}</span>
-                <button className="bg-[#F5D060] hover:bg-[#F0C830] text-[#1a0a2e] font-oswald text-base uppercase tracking-widest px-8 py-3 rounded-xl transition-all hover:shadow-[0_0_30px_rgba(245,208,96,0.4)]">
+                <button
+                  onClick={scrollToContacts}
+                  className="bg-[#F5D060] hover:bg-[#F0C830] text-[#1a0a2e] font-oswald text-base uppercase tracking-widest px-8 py-3 rounded-xl transition-all hover:shadow-[0_0_30px_rgba(245,208,96,0.4)]"
+                >
                   Заказать
                 </button>
               </div>
