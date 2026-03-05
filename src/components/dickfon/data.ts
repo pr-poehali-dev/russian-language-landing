@@ -91,6 +91,7 @@ export const PRODUCTS: Product[] = [
     badge: "Новинка",
     color: "#A8C4D4",
     description: DESC_PETLICHKA,
+    image: "https://cdn.poehali.dev/projects/ddbb85d8-7b82-4154-9714-085bdb6c3887/files/10288824-e68f-426f-9a21-452e82c1c5f6.jpg",
   },
   {
     id: 3,
