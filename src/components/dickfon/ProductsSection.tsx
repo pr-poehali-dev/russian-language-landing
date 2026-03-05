@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { PRODUCTS, Product } from "./data";
 
@@ -8,6 +9,8 @@ interface ProductsSectionProps {
 }
 
 export default function ProductsSection({ homeRef, productsRef, onProductClick }: ProductsSectionProps) {
+  const navigate = useNavigate();
+
   return (
     <>
       {/* HERO */}
@@ -75,23 +78,31 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
               <div
                 key={product.id}
                 className="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-[#F5D060]/40 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] hover:-translate-y-2 cursor-pointer"
-                onClick={() => onProductClick(product.id)}
+                onClick={() => navigate(`/product/${product.slug}`)}
               >
                 <div
-                  className="h-56 flex items-center justify-center relative"
+                  className="h-56 flex items-center justify-center relative overflow-hidden"
                   style={{
                     background: `radial-gradient(circle at center, ${product.color}20 0%, transparent 70%)`,
                   }}
                 >
-                  <div
-                    className="w-28 h-28 rounded-full flex items-center justify-center text-5xl"
-                    style={{
-                      background: `radial-gradient(circle, ${product.color}25, transparent)`,
-                      boxShadow: `0 0 40px ${product.color}25`,
-                    }}
-                  >
-                    🎤
-                  </div>
+                  {product.image ? (
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div
+                      className="w-28 h-28 rounded-full flex items-center justify-center text-5xl"
+                      style={{
+                        background: `radial-gradient(circle, ${product.color}25, transparent)`,
+                        boxShadow: `0 0 40px ${product.color}25`,
+                      }}
+                    >
+                      🎤
+                    </div>
+                  )}
                   <span className="absolute top-4 right-4 font-oswald text-xs uppercase tracking-widest bg-[#F5D060] text-[#1a0a2e] px-3 py-1 rounded-full">
                     {product.badge}
                   </span>

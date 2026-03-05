@@ -54,6 +54,7 @@ export const DESC_EXCLUSIVE = `Представляем вам уникальн�
 
 export interface Product {
   id: number;
+  slug: string;
   name: string;
   seoTitle: string;
   category: string;
@@ -62,11 +63,13 @@ export interface Product {
   badge: string;
   color: string;
   description: string;
+  image?: string;
 }
 
 export const PRODUCTS: Product[] = [
   {
     id: 1,
+    slug: "karaoke",
     name: "DICKFON для Караоке",
     seoTitle: "Микрофон в виде члена для караоке | Самый веселый подарок на вечеринку",
     category: "Хит вечеринок",
@@ -75,9 +78,11 @@ export const PRODUCTS: Product[] = [
     badge: "Хит",
     color: "#D4A843",
     description: DESC_KARAOKE,
+    image: "https://cdn.poehali.dev/projects/ddbb85d8-7b82-4154-9714-085bdb6c3887/files/32b79e07-4c39-4e71-8587-3a2015c713c2.jpg",
   },
   {
     id: 2,
+    slug: "petlichka",
     name: "DICKFON Петличка",
     seoTitle: "Микрофон петличка в виде члена | Смешная петличка для видео | Необычный подарок блогеру",
     category: "Для контента",
@@ -89,6 +94,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 3,
+    slug: "exclusive",
     name: "DICKFON Эксклюзив",
     seoTitle: "Эксклюзивный кастомный микрофон в виде члена на заказ | Индивидуальное изготовление | Премиальное студийное качество",
     category: "Лимитированная серия",

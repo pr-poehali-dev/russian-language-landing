@@ -19,8 +19,8 @@ export default function Index() {
   const contactsRef = useRef<HTMLElement>(null);
 
   const handleAgeCheck = () => {
-    if (!day || !month || !year) return;
-    const birth = new Date(parseInt(year), parseInt(month), parseInt(day));
+    if (!day || !month || !year || year.length < 4) return;
+    const birth = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
     const today = new Date();
     let age = today.getFullYear() - birth.getFullYear();
     const m = today.getMonth() - birth.getMonth();
@@ -74,7 +74,7 @@ export default function Index() {
       />
 
       {/* CONTACTS */}
-      <section ref={contactsRef} className="py-24 px-6 border-t border-white/10">
+      <section id="contacts-section" ref={contactsRef} className="py-24 px-6 border-t border-white/10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <p className="font-cormorant text-[#F5D060] italic text-lg mb-3">свяжитесь с нами</p>

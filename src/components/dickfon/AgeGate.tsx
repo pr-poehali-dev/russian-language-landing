@@ -1,5 +1,3 @@
-import { DAYS, MONTHS, YEARS } from "./data";
-
 interface AgeGateProps {
   day: string;
   month: string;
@@ -31,7 +29,10 @@ export default function AgeGate({
   onDayChange, onMonthChange, onYearChange,
   onConfirm,
 }: AgeGateProps) {
-  const isReady = day && month && year;
+  const isReady = day && month && year && year.length === 4;
+
+  const inputClass =
+    "w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white font-rubik text-base text-center outline-none focus:border-[#F5D060]/60 focus:bg-white/15 transition-all [color-scheme:dark] placeholder-white/40";
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#1a0a2e] relative overflow-hidden">
@@ -64,42 +65,39 @@ export default function AgeGate({
             <div className="grid grid-cols-3 gap-3">
               <div className="flex flex-col">
                 <span className="font-rubik text-white/40 text-xs mb-1 text-center">День</span>
-                <select
+                <input
+                  type="number"
+                  min={1}
+                  max={31}
+                  placeholder="ДД"
                   value={day}
                   onChange={(e) => onDayChange(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white font-rubik text-base outline-none focus:border-[#F5D060]/60 focus:bg-white/15 transition-all appearance-none cursor-pointer [color-scheme:dark]"
-                >
-                  <option value="" disabled>—</option>
-                  {DAYS.map((d) => (
-                    <option key={d} value={d}>{d}</option>
-                  ))}
-                </select>
+                  className={inputClass}
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-rubik text-white/40 text-xs mb-1 text-center">Месяц</span>
-                <select
+                <input
+                  type="number"
+                  min={1}
+                  max={12}
+                  placeholder="ММ"
                   value={month}
                   onChange={(e) => onMonthChange(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white font-rubik text-base outline-none focus:border-[#F5D060]/60 focus:bg-white/15 transition-all appearance-none cursor-pointer [color-scheme:dark]"
-                >
-                  <option value="" disabled>—</option>
-                  {MONTHS.map((m, i) => (
-                    <option key={i} value={i}>{m}</option>
-                  ))}
-                </select>
+                  className={inputClass}
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-rubik text-white/40 text-xs mb-1 text-center">Год</span>
-                <select
+                <input
+                  type="number"
+                  min={1900}
+                  max={new Date().getFullYear()}
+                  placeholder="ГГГГ"
                   value={year}
                   onChange={(e) => onYearChange(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white font-rubik text-base outline-none focus:border-[#F5D060]/60 focus:bg-white/15 transition-all appearance-none cursor-pointer [color-scheme:dark]"
-                >
-                  <option value="" disabled>—</option>
-                  {YEARS.map((y) => (
-                    <option key={y} value={y}>{y}</option>
-                  ))}
-                </select>
+                  className={inputClass}
+                />
               </div>
             </div>
           </div>
