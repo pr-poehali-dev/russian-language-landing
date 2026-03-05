@@ -103,6 +103,7 @@ export const PRODUCTS: Product[] = [
     badge: "Лимитед",
     color: "#C47B3A",
     description: DESC_EXCLUSIVE,
+    image: "https://cdn.poehali.dev/projects/ddbb85d8-7b82-4154-9714-085bdb6c3887/bucket/a5e1d4b5-57d5-414d-b591-a77d96c4b3a5.JPG",
   },
 ];
 
