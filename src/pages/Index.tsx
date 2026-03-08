@@ -1,60 +1,21 @@
 import { useState, useRef } from "react";
 import Icon from "@/components/ui/icon";
-import AgeGate, { AgeDenied } from "@/components/dickfon/AgeGate";
 import Navbar from "@/components/dickfon/Navbar";
 import ProductsSection from "@/components/dickfon/ProductsSection";
 import ProductModal from "@/components/dickfon/ProductModal";
-import { PRODUCTS, DAYS, MONTHS, YEARS } from "@/components/dickfon/data";
+import { PRODUCTS } from "@/components/dickfon/data";
 
 export default function Index() {
-  const [ageVerified, setAgeVerified] = useState(() => sessionStorage.getItem("ageVerified") === "true");
-  const [ageDenied, setAgeDenied] = useState(false);
-  const [dayIndex, setDayIndex] = useState(0);
-  const [monthIndex, setMonthIndex] = useState(0);
-  const [yearIndex, setYearIndex] = useState(10);
   const [activeProduct, setActiveProduct] = useState<number | null>(null);
 
   const homeRef = useRef<HTMLElement>(null);
   const productsRef = useRef<HTMLElement>(null);
   const contactsRef = useRef<HTMLElement>(null);
 
-  const handleAgeCheck = () => {
-    const d = DAYS[dayIndex];
-    const m = monthIndex + 1;
-    const y = YEARS[yearIndex];
-    const birth = new Date(y, m - 1, d);
-    const today = new Date();
-    let age = today.getFullYear() - birth.getFullYear();
-    const diff = today.getMonth() - birth.getMonth();
-    if (diff < 0 || (diff === 0 && today.getDate() < birth.getDate())) age--;
-    if (age >= 18) {
-      sessionStorage.setItem("ageVerified", "true");
-      setAgeVerified(true);
-    } else {
-      setAgeDenied(true);
-    }
-  };
-
   const scrollToContacts = () => {
     setActiveProduct(null);
     contactsRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  if (ageDenied) return <AgeDenied />;
-
-  if (!ageVerified) {
-    return (
-      <AgeGate
-        dayIndex={dayIndex}
-        monthIndex={monthIndex}
-        yearIndex={yearIndex}
-        onDayChange={setDayIndex}
-        onMonthChange={setMonthIndex}
-        onYearChange={setYearIndex}
-        onConfirm={handleAgeCheck}
-      />
-    );
-  }
 
   const selectedProduct = activeProduct !== null
     ? PRODUCTS.find((p) => p.id === activeProduct)
