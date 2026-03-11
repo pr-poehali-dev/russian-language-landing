@@ -46,12 +46,9 @@ function ScrollPicker({ items, selectedIndex, onSelect }: ScrollPickerProps) {
         ref={containerRef}
         onScroll={handleScroll}
         className="h-full overflow-y-scroll scrollbar-none"
-        style={{
-          scrollSnapType: "y mandatory",
-          paddingTop: itemHeight * 2,
-          paddingBottom: itemHeight * 2,
-        }}
+        style={{ scrollSnapType: "y mandatory" }}
       >
+        <div style={{ height: itemHeight * 2, scrollSnapAlign: "none" }} />
         {items.map((item, i) => (
           <div
             key={i}
@@ -59,7 +56,7 @@ function ScrollPicker({ items, selectedIndex, onSelect }: ScrollPickerProps) {
             className="flex items-center justify-center cursor-pointer transition-all duration-200"
             style={{
               height: itemHeight,
-              scrollSnapAlign: "start",
+              scrollSnapAlign: "center",
               color: i === selectedIndex ? "#F5D060" : "rgba(255,255,255,0.35)",
               fontSize: i === selectedIndex ? "1.15rem" : "0.95rem",
               fontWeight: i === selectedIndex ? 700 : 400,
@@ -68,6 +65,7 @@ function ScrollPicker({ items, selectedIndex, onSelect }: ScrollPickerProps) {
             <span className="font-rubik">{item}</span>
           </div>
         ))}
+        <div style={{ height: itemHeight * 2, scrollSnapAlign: "none" }} />
       </div>
     </div>
   );
