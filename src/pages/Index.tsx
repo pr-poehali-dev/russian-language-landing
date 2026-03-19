@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import Icon from "@/components/ui/icon";
 import Navbar from "@/components/dickfon/Navbar";
 import ProductsSection from "@/components/dickfon/ProductsSection";
@@ -29,6 +30,15 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-[#1a0a2e] text-white overflow-x-hidden">
+      <Helmet>
+        <title>DICKFON — Самый необычный микрофон | Купить микрофон в виде члена</title>
+        <meta name="description" content="Микрофон в форме члена DICKFON — лучший подарок на мальчишник, девичник, корпоратив. Модели для караоке, петличка для блогеров и эксклюзив на заказ. Заказать по телефону +7 (993) 103-07-83." />
+        <link rel="canonical" href="https://dickfon.ru/" />
+        <meta property="og:title" content="DICKFON — Самый необычный микрофон" />
+        <meta property="og:description" content="Микрофон в форме члена — лучший подарок на вечеринку. Модели для караоке, петличка, эксклюзив на заказ." />
+        <meta property="og:url" content="https://dickfon.ru/" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar items={navItems} />
 
       <ProductsSection

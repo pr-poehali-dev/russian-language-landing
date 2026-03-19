@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { PRODUCTS } from "@/components/dickfon/data";
 import Navbar from "@/components/dickfon/Navbar";
 import Icon from "@/components/ui/icon";
@@ -37,8 +38,20 @@ export default function ProductPage() {
     );
   }
 
+  const productUrl = `https://dickfon.ru/product/${product.slug}`;
+
   return (
     <div className="min-h-screen bg-[#1a0a2e] text-white overflow-x-hidden">
+      <Helmet>
+        <title>{product.seoTitle}</title>
+        <meta name="description" content={product.seoDescription} />
+        <link rel="canonical" href={productUrl} />
+        <meta property="og:title" content={product.seoTitle} />
+        <meta property="og:description" content={product.seoDescription} />
+        <meta property="og:url" content={productUrl} />
+        <meta property="og:type" content="product" />
+        {product.image && <meta property="og:image" content={product.image} />}
+      </Helmet>
       <Navbar items={navItems} />
 
       <div className="pt-24 pb-20 px-6 max-w-5xl mx-auto">
