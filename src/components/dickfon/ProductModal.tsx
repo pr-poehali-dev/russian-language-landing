@@ -80,7 +80,7 @@ export default function ProductModal({ product, onClose, onOrder }: ProductModal
             >
               {product.price}
             </span>
-            <button onClick={onOrder} className="btn-liquid">
+            <button onClick={onOrder} className="btn-capsule btn-capsule-orange">
               Заказать
             </button>
           </div>

@@ -170,7 +170,7 @@ export default function AgeGate({
             </div>
           </div>
 
-          <button onClick={onConfirm} className="btn-liquid w-full justify-center">
+          <button onClick={onConfirm} className="btn-capsule btn-capsule-blue w-full justify-center py-4">
             Подтвердить возраст
           </button>
         </div>

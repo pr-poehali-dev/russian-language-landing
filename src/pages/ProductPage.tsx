@@ -67,7 +67,7 @@ export default function ProductPage() {
       <div className="pt-24 pb-20 px-6 max-w-5xl mx-auto relative z-10">
         <button
           onClick={() => navigate(-1)}
-          className="btn-glass mb-10"
+          className="btn-capsule btn-capsule-clear mb-10"
         >
           <Icon name="ArrowLeft" size={16} />
           Назад
@@ -146,7 +146,7 @@ export default function ProductPage() {
                     document.getElementById("contacts-section")?.scrollIntoView({ behavior: "smooth" });
                   }, 400);
                 }}
-                className="btn-liquid"
+                className="btn-capsule btn-capsule-orange"
               >
                 Заказать
               </a>

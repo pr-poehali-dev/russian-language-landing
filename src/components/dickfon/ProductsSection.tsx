@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { PRODUCTS, Product } from "./data";
 
-// Цвета неонового свечения снизу для каждого товара — как на картинке
+// Цвета неонового свечения снизу для каждого товара
 const CARD_GLOW: Record<number, string> = {
-  1: "rgba(220, 160, 40, 0.7)",   // золото — Karaoke
-  2: "rgba(40, 160, 220, 0.65)",  // синий — Petlichka
-  3: "rgba(200, 80, 20, 0.65)",   // оранжево-медный — Exclusive
+  1: "rgba(220, 160, 40, 0.7)",
+  2: "rgba(40, 160, 220, 0.65)",
+  3: "rgba(200, 80, 20, 0.65)",
 };
 
 interface ProductsSectionProps {
@@ -39,9 +39,11 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
           <p className="font-rubik text-white/55 text-lg md:text-xl max-w-lg mx-auto mb-12">
             Идеальный подарок для мальчишника, девичника, корпоратива или Дня рождения. Взорви вечеринку с DICKFON!
           </p>
+
+          {/* CTA — синяя стеклянная капсула */}
           <button
             onClick={() => productsRef.current?.scrollIntoView({ behavior: "smooth" })}
-            className="btn-liquid"
+            className="btn-capsule btn-capsule-blue text-base px-8 py-4"
           >
             Смотреть товары
             <Icon name="ArrowDown" size={18} />
@@ -125,9 +127,10 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
                       >
                         {product.price}
                       </span>
-                      <span className="flex items-center gap-1 font-rubik text-xs text-white/35 group-hover:text-[#F5D060] transition-colors duration-300 uppercase tracking-widest">
+                      {/* Прозрачная стеклянная капсула */}
+                      <span className="btn-capsule btn-capsule-clear text-xs py-2 px-4 pointer-events-none">
                         Подробнее
-                        <Icon name="ArrowRight" size={13} />
+                        <Icon name="ArrowRight" size={12} />
                       </span>
                     </div>
                   </div>
