@@ -11,6 +11,9 @@ interface NavbarProps {
   items: NavItem[];
 }
 
+// Цвет каждой нав-кнопки по индексу
+const NAV_COLORS = ["btn-nav-blue", "btn-nav-orange", "btn-nav-ice"];
+
 export default function Navbar({ items }: NavbarProps) {
   const [navOpen, setNavOpen] = useState(false);
 
@@ -34,13 +37,13 @@ export default function Navbar({ items }: NavbarProps) {
           DICKFON
         </button>
 
-        {/* Desktop — стеклянные капсулы */}
+        {/* Desktop — цветные стеклянные капсулы */}
         <div className="hidden md:flex items-center gap-3">
-          {items.map((item) => (
+          {items.map((item, i) => (
             <button
               key={item.label}
               onClick={() => handleClick(item)}
-              className="btn-nav-capsule"
+              className={`btn-nav-capsule ${NAV_COLORS[i] ?? "btn-nav-ice"}`}
             >
               {item.label}
             </button>
@@ -66,11 +69,11 @@ export default function Navbar({ items }: NavbarProps) {
             WebkitBackdropFilter: "blur(28px)",
           }}
         >
-          {items.map((item) => (
+          {items.map((item, i) => (
             <button
               key={item.label}
               onClick={() => handleClick(item)}
-              className="btn-nav-capsule w-full"
+              className={`btn-nav-capsule ${NAV_COLORS[i] ?? "btn-nav-ice"} w-full`}
             >
               {item.label}
             </button>

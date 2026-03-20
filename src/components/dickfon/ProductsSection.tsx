@@ -39,8 +39,6 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
           <p className="font-rubik text-white/55 text-lg md:text-xl max-w-lg mx-auto mb-12">
             Идеальный подарок для мальчишника, девичника, корпоратива или Дня рождения. Взорви вечеринку с DICKFON!
           </p>
-
-          {/* CTA — синяя стеклянная капсула */}
           <button
             onClick={() => productsRef.current?.scrollIntoView({ behavior: "smooth" })}
             className="btn-capsule btn-capsule-blue text-base px-8 py-4"
@@ -81,22 +79,24 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
 
                 {/* Стеклянный контейнер */}
                 <div className="product-card-inner">
-                  {/* Изображение */}
+                  {/* Изображение — без обрезки, полностью */}
                   <div
-                    className="h-56 flex items-center justify-center relative overflow-hidden"
+                    className="relative overflow-hidden flex items-center justify-center"
                     style={{
-                      background: `radial-gradient(ellipse at 45% 45%, ${product.color}28 0%, transparent 72%)`,
+                      background: `radial-gradient(ellipse at 50% 55%, ${product.color}22 0%, transparent 72%)`,
+                      minHeight: "220px",
                     }}
                   >
                     {product.image ? (
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-103"
+                        style={{ maxHeight: "280px", display: "block" }}
                       />
                     ) : (
                       <div
-                        className="w-24 h-24 rounded-full flex items-center justify-center text-5xl"
+                        className="w-24 h-24 rounded-full flex items-center justify-center text-5xl my-8"
                         style={{
                           background: `radial-gradient(circle, ${product.color}20, transparent)`,
                           boxShadow: `0 0 40px ${product.color}25`,
@@ -110,15 +110,20 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
                     </span>
                   </div>
 
-                  {/* Текст */}
-                  <div className="p-6 relative z-10">
-                    <p className="font-rubik text-white/35 text-xs uppercase tracking-widest mb-1">
+                  {/* Текст + кнопки */}
+                  <div className="p-5 relative z-10">
+                    <p className="font-rubik text-white/30 text-xs uppercase tracking-widest mb-2">
                       {product.category}
                     </p>
-                    <h3 className="font-oswald text-2xl text-white uppercase tracking-wide mb-1 group-hover:text-[#F5D060] transition-colors duration-300">
-                      {product.name}
-                    </h3>
-                    <p className="font-rubik text-white/40 text-sm mb-5">{product.volume}</p>
+
+                    {/* Название товара в стеклянной кнопке */}
+                    <div className="mb-3">
+                      <span className="product-name-tag">
+                        {product.name}
+                      </span>
+                    </div>
+
+                    <p className="font-rubik text-white/38 text-sm mb-4">{product.volume}</p>
 
                     <div className="flex items-center justify-between">
                       <span
@@ -127,10 +132,10 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
                       >
                         {product.price}
                       </span>
-                      {/* Прозрачная стеклянная капсула */}
-                      <span className="btn-capsule btn-capsule-clear text-xs py-2 px-4 pointer-events-none">
+                      {/* Прозрачная стеклянная капсула «Подробнее» */}
+                      <span className="btn-capsule btn-capsule-clear text-xs py-2 px-3 pointer-events-none" style={{ fontSize: "0.68rem" }}>
                         Подробнее
-                        <Icon name="ArrowRight" size={12} />
+                        <Icon name="ArrowRight" size={11} />
                       </span>
                     </div>
                   </div>

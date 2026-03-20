@@ -31,7 +31,7 @@ export default function ProductPage() {
         </div>
         <div className="relative z-10 text-center">
           <p className="font-oswald text-2xl mb-6 text-glow-white">Товар не найден</p>
-          <button onClick={() => navigate("/")} className="btn-liquid">
+          <button onClick={() => navigate("/")} className="btn-capsule btn-capsule-blue">
             На главную
           </button>
         </div>
@@ -74,23 +74,31 @@ export default function ProductPage() {
         </button>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* IMAGE */}
-          <div className="glass-card overflow-hidden flex items-center justify-center min-h-[340px] relative" style={{ padding: 0 }}>
+          {/* IMAGE — без обрезки, полностью */}
+          <div
+            className="glass-card flex items-center justify-center relative"
+            style={{
+              padding: 0,
+              minHeight: "340px",
+              background: `linear-gradient(155deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 40%, rgba(0,0,0,0.15) 100%)`,
+            }}
+          >
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 rounded-[28px]"
               style={{
-                background: `radial-gradient(ellipse at 45% 38%, ${product.color}28 0%, transparent 72%)`,
+                background: `radial-gradient(ellipse at 50% 50%, ${product.color}22 0%, transparent 70%)`,
               }}
             />
             {product.image ? (
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover max-h-[480px] relative z-10"
+                className="relative z-10 w-full h-auto object-contain rounded-[28px]"
+                style={{ maxHeight: "520px", display: "block" }}
               />
             ) : (
               <span
-                className="text-9xl relative z-10"
+                className="text-9xl relative z-10 py-12"
                 style={{ filter: "drop-shadow(0 0 36px rgba(255,255,255,0.18))" }}
               >
                 🎤
@@ -104,15 +112,16 @@ export default function ProductPage() {
           {/* INFO */}
           <div className="flex flex-col gap-6">
             <div>
-              <p className="font-rubik text-white/32 text-xs uppercase tracking-widest mb-1">
+              <p className="font-rubik text-white/30 text-xs uppercase tracking-widest mb-3">
                 {product.category}
               </p>
-              <h1
-                className="font-oswald text-4xl md:text-5xl uppercase tracking-tight text-white leading-tight mb-2 text-glow-white"
-              >
-                {product.name}
-              </h1>
-              <p className="font-rubik text-white/42 text-sm">{product.volume}</p>
+              {/* Название товара в стеклянной кнопке */}
+              <div className="mb-3">
+                <span className="product-name-tag text-lg px-5 py-2">
+                  {product.name}
+                </span>
+              </div>
+              <p className="font-rubik text-white/40 text-sm mt-3">{product.volume}</p>
             </div>
 
             <div
