@@ -79,9 +79,9 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
 
                 {/* Стеклянный контейнер */}
                 <div className="product-card-inner">
-                  {/* Изображение — без обрезки, полностью */}
+                  {/* Изображение — без обрезки, в скруглённом прямоугольнике */}
                   <div
-                    className="relative overflow-hidden flex items-center justify-center"
+                    className="relative flex items-center justify-center p-3"
                     style={{
                       background: `radial-gradient(ellipse at 50% 55%, ${product.color}22 0%, transparent 72%)`,
                       minHeight: "220px",
@@ -92,7 +92,11 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
                         src={product.image}
                         alt={product.name}
                         className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-103"
-                        style={{ maxHeight: "280px", display: "block" }}
+                        style={{
+                          maxHeight: "280px",
+                          display: "block",
+                          borderRadius: "16px",
+                        }}
                       />
                     ) : (
                       <div

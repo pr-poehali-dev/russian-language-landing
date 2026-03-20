@@ -80,7 +80,7 @@ export const PRODUCTS: Product[] = [
     badge: "Хит",
     color: "#D4A843",
     description: DESC_KARAOKE,
-    image: "https://cdn.poehali.dev/projects/ddbb85d8-7b82-4154-9714-085bdb6c3887/bucket/6ece2cfc-03c4-4a65-bdd6-c9177dcb99a7.jpg",
+    image: "https://cdn.poehali.dev/projects/ddbb85d8-7b82-4154-9714-085bdb6c3887/bucket/18c9e032-59f0-44a0-86d4-32a3461eac50.png",
   },
   {
     id: 2,

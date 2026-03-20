@@ -93,8 +93,8 @@ export default function ProductPage() {
               <img
                 src={product.image}
                 alt={product.name}
-                className="relative z-10 w-full h-auto object-contain rounded-[28px]"
-                style={{ maxHeight: "520px", display: "block" }}
+                className="relative z-10 w-full h-auto object-contain"
+                style={{ maxHeight: "520px", display: "block", borderRadius: "20px", padding: "8px" }}
               />
             ) : (
               <span
