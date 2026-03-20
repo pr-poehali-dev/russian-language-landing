@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { PRODUCTS } from "@/components/dickfon/data";
@@ -8,6 +9,7 @@ export default function ProductPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const product = PRODUCTS.find((p) => p.slug === slug);
+  const [activeImg, setActiveImg] = useState(0);
 
   const goToSection = (sectionId: string) => {
     navigate("/");
@@ -40,6 +42,7 @@ export default function ProductPage() {
   }
 
   const productUrl = `https://dickfon.ru/product/${product.slug}`;
+  const allImages = product.images ?? (product.image ? [product.image] : []);
 
   return (
     <div className="min-h-screen text-white overflow-x-hidden relative" style={{ background: "#080510" }}>
@@ -54,7 +57,6 @@ export default function ProductPage() {
         {product.image && <meta property="og:image" content={product.image} />}
       </Helmet>
 
-      {/* Liquid background */}
       <div className="liquid-bg">
         <div className="liquid-blob liquid-blob-1" />
         <div className="liquid-blob liquid-blob-2" />
@@ -65,48 +67,72 @@ export default function ProductPage() {
       <Navbar items={navItems} />
 
       <div className="pt-24 pb-20 px-6 max-w-5xl mx-auto relative z-10">
-        <button
-          onClick={() => navigate(-1)}
-          className="btn-capsule btn-capsule-clear mb-10"
-        >
+        <button onClick={() => navigate(-1)} className="btn-capsule btn-capsule-clear mb-10">
           <Icon name="ArrowLeft" size={16} />
           Назад
         </button>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* IMAGE — без обрезки, полностью */}
-          <div
-            className="glass-card flex items-center justify-center relative"
-            style={{
-              padding: 0,
-              minHeight: "340px",
-              background: `linear-gradient(155deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 40%, rgba(0,0,0,0.15) 100%)`,
-            }}
-          >
+          {/* ГАЛЕРЕЯ */}
+          <div className="flex flex-col gap-3">
+            {/* Главное фото */}
             <div
-              className="absolute inset-0 rounded-[28px]"
+              className="glass-card flex items-center justify-center relative overflow-hidden"
               style={{
+                minHeight: "340px",
                 background: `radial-gradient(ellipse at 50% 50%, ${product.color}22 0%, transparent 70%)`,
               }}
-            />
-            {product.image ? (
-              <img
-                src={product.image}
-                alt={product.name}
-                className="relative z-10 w-full h-auto object-contain"
-                style={{ maxHeight: "520px", display: "block", borderRadius: "20px", padding: "8px" }}
-              />
-            ) : (
-              <span
-                className="text-9xl relative z-10 py-12"
-                style={{ filter: "drop-shadow(0 0 36px rgba(255,255,255,0.18))" }}
-              >
-                🎤
+            >
+              {allImages.length > 0 ? (
+                <img
+                  key={activeImg}
+                  src={allImages[activeImg]}
+                  alt={product.name}
+                  className="relative z-10 w-full h-auto object-contain"
+                  style={{ maxHeight: "520px", display: "block", borderRadius: "20px", padding: "10px" }}
+                />
+              ) : (
+                <span className="text-9xl relative z-10 py-12" style={{ filter: "drop-shadow(0 0 36px rgba(255,255,255,0.18))" }}>
+                  🎤
+                </span>
+              )}
+              <span className="badge-glass absolute top-4 left-4 z-20">
+                {product.badge}
               </span>
+            </div>
+
+            {/* Миниатюры — если фото больше одного */}
+            {allImages.length > 1 && (
+              <div className="flex gap-3">
+                {allImages.map((src, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImg(i)}
+                    className="flex-1 overflow-hidden transition-all duration-200"
+                    style={{
+                      borderRadius: "14px",
+                      border: i === activeImg
+                        ? "2px solid rgba(245,208,96,0.8)"
+                        : "2px solid rgba(255,255,255,0.12)",
+                      boxShadow: i === activeImg
+                        ? "0 0 16px rgba(245,208,96,0.35), inset 0 1px 0 rgba(255,255,255,0.3)"
+                        : "inset 0 1px 0 rgba(255,255,255,0.15)",
+                      background: i === activeImg
+                        ? "rgba(245,208,96,0.08)"
+                        : "rgba(255,255,255,0.04)",
+                      padding: "4px",
+                    }}
+                  >
+                    <img
+                      src={src}
+                      alt={`${product.name} фото ${i + 1}`}
+                      className="w-full h-20 object-cover"
+                      style={{ borderRadius: "10px", display: "block" }}
+                    />
+                  </button>
+                ))}
+              </div>
             )}
-            <span className="badge-glass absolute top-4 left-4 z-20">
-              {product.badge}
-            </span>
           </div>
 
           {/* INFO */}
@@ -115,7 +141,6 @@ export default function ProductPage() {
               <p className="font-rubik text-white/30 text-xs uppercase tracking-widest mb-3">
                 {product.category}
               </p>
-              {/* Название товара в стеклянной кнопке */}
               <div className="mb-3">
                 <span className="product-name-tag text-lg px-5 py-2">
                   {product.name}
