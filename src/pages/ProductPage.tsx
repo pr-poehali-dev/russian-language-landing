@@ -77,24 +77,24 @@ export default function ProductPage() {
           <div className="flex flex-col gap-3">
             {/* Главное фото */}
             <div
-              className="glass-card flex items-center justify-center relative overflow-hidden"
-              style={{
-                minHeight: "340px",
-                background: `radial-gradient(ellipse at 50% 50%, ${product.color}22 0%, transparent 70%)`,
-              }}
+              className="glass-card relative overflow-hidden"
+              style={{ minHeight: "400px" }}
             >
               {allImages.length > 0 ? (
                 <img
                   key={activeImg}
                   src={allImages[activeImg]}
                   alt={product.name}
-                  className="relative z-10 w-full h-auto object-contain"
-                  style={{ maxHeight: "520px", display: "block", borderRadius: "20px", padding: "10px" }}
+                  className="w-full h-full object-cover absolute inset-0"
+                  style={{ display: "block", borderRadius: "28px" }}
                 />
               ) : (
-                <span className="text-9xl relative z-10 py-12" style={{ filter: "drop-shadow(0 0 36px rgba(255,255,255,0.18))" }}>
-                  🎤
-                </span>
+                <div
+                  className="w-full h-full flex items-center justify-center"
+                  style={{ minHeight: "400px", background: `radial-gradient(ellipse at 50% 50%, ${product.color}22 0%, transparent 70%)` }}
+                >
+                  <span className="text-9xl" style={{ filter: "drop-shadow(0 0 36px rgba(255,255,255,0.18))" }}>🎤</span>
+                </div>
               )}
               <span className="badge-glass absolute top-4 left-4 z-20">
                 {product.badge}
