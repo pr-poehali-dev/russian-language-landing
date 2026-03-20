@@ -2,6 +2,13 @@ import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { PRODUCTS, Product } from "./data";
 
+// Цвета неонового свечения снизу для каждого товара — как на картинке
+const CARD_GLOW: Record<number, string> = {
+  1: "rgba(220, 160, 40, 0.7)",   // золото — Karaoke
+  2: "rgba(40, 160, 220, 0.65)",  // синий — Petlichka
+  3: "rgba(200, 80, 20, 0.65)",   // оранжево-медный — Exclusive
+};
+
 interface ProductsSectionProps {
   homeRef: React.RefObject<HTMLElement>;
   productsRef: React.RefObject<HTMLElement>;
@@ -25,7 +32,7 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
           <h1 className="font-oswald text-6xl md:text-8xl lg:text-9xl uppercase tracking-tight leading-none mb-6 hero-gradient-text">
             DICK
             <br />
-            <span style={{ WebkitTextFillColor: "white", filter: "drop-shadow(0 0 20px rgba(255,255,255,0.15))" }}>
+            <span style={{ WebkitTextFillColor: "white", filter: "drop-shadow(0 0 18px rgba(255,255,255,0.12))" }}>
               FON
             </span>
           </h1>
@@ -57,64 +64,72 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
             <div className="gold-divider" />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10">
             {PRODUCTS.map((product: Product) => (
               <div
                 key={product.id}
                 className="product-card group"
                 onClick={() => navigate(`/product/${product.slug}`)}
               >
+                {/* Нижнее цветное свечение */}
                 <div
-                  className="h-56 flex items-center justify-center relative overflow-hidden"
-                  style={{
-                    background: `radial-gradient(circle at 40% 40%, ${product.color}30 0%, ${product.color}08 50%, transparent 80%)`,
-                  }}
-                >
-                  {product.image ? (
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div
-                      className="w-28 h-28 rounded-full flex items-center justify-center text-5xl"
-                      style={{
-                        background: `radial-gradient(circle, ${product.color}30, transparent)`,
-                        boxShadow: `0 0 50px ${product.color}30`,
-                      }}
-                    >
-                      🎤
-                    </div>
-                  )}
-                  <span
-                    className="absolute top-4 right-4 badge-glass font-oswald text-xs uppercase tracking-widest"
-                    style={{ zIndex: 2 }}
+                  className="product-card-glow"
+                  style={{ background: CARD_GLOW[product.id] }}
+                />
+
+                {/* Стеклянный контейнер */}
+                <div className="product-card-inner">
+                  {/* Изображение */}
+                  <div
+                    className="h-56 flex items-center justify-center relative overflow-hidden"
+                    style={{
+                      background: `radial-gradient(ellipse at 45% 45%, ${product.color}28 0%, transparent 72%)`,
+                    }}
                   >
-                    {product.badge}
-                  </span>
-                </div>
-
-                <div className="p-6 relative z-10">
-                  <p className="font-rubik text-white/35 text-xs uppercase tracking-widest mb-1">
-                    {product.category}
-                  </p>
-                  <h3 className="font-oswald text-2xl text-white uppercase tracking-wide mb-1 group-hover:text-[#F5D060] transition-colors duration-300">
-                    {product.name}
-                  </h3>
-                  <p className="font-rubik text-white/45 text-sm mb-4">{product.volume}</p>
-
-                  <div className="flex items-center justify-between">
-                    <span
-                      className="font-oswald text-2xl text-[#F5D060]"
-                      style={{ textShadow: "0 0 20px rgba(245,208,96,0.4)" }}
-                    >
-                      {product.price}
+                    {product.image ? (
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div
+                        className="w-24 h-24 rounded-full flex items-center justify-center text-5xl"
+                        style={{
+                          background: `radial-gradient(circle, ${product.color}20, transparent)`,
+                          boxShadow: `0 0 40px ${product.color}25`,
+                        }}
+                      >
+                        🎤
+                      </div>
+                    )}
+                    <span className="badge-glass absolute top-4 right-4 z-10">
+                      {product.badge}
                     </span>
-                    <span className="flex items-center gap-1 font-rubik text-xs text-white/40 group-hover:text-[#F5D060] transition-colors duration-300 uppercase tracking-widest">
-                      Подробнее
-                      <Icon name="ArrowRight" size={13} />
-                    </span>
+                  </div>
+
+                  {/* Текст */}
+                  <div className="p-6 relative z-10">
+                    <p className="font-rubik text-white/35 text-xs uppercase tracking-widest mb-1">
+                      {product.category}
+                    </p>
+                    <h3 className="font-oswald text-2xl text-white uppercase tracking-wide mb-1 group-hover:text-[#F5D060] transition-colors duration-300">
+                      {product.name}
+                    </h3>
+                    <p className="font-rubik text-white/40 text-sm mb-5">{product.volume}</p>
+
+                    <div className="flex items-center justify-between">
+                      <span
+                        className="font-oswald text-2xl text-[#F5D060]"
+                        style={{ textShadow: "0 0 16px rgba(245,208,96,0.4)" }}
+                      >
+                        {product.price}
+                      </span>
+                      <span className="flex items-center gap-1 font-rubik text-xs text-white/35 group-hover:text-[#F5D060] transition-colors duration-300 uppercase tracking-widest">
+                        Подробнее
+                        <Icon name="ArrowRight" size={13} />
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>

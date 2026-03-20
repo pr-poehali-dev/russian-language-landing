@@ -29,7 +29,7 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen text-white overflow-x-hidden relative" style={{ background: "#0d0618" }}>
+    <div className="min-h-screen text-white overflow-x-hidden relative" style={{ background: "#080510" }}>
       <Helmet>
         <title>DICKFON — Самый необычный микрофон | Купить микрофон в виде члена</title>
         <meta name="description" content="Микрофон в форме члена DICKFON — лучший подарок на мальчишник, девичник, корпоратив. Модели для караоке, петличка для блогеров и эксклюзив на заказ. Заказать по телефону +7 (993) 103-07-83." />
@@ -59,7 +59,7 @@ export default function Index() {
 
       {/* CONTACTS */}
       <section id="contacts-section" ref={contactsRef} className="py-24 px-6 relative">
-        <hr className="section-sep mb-24 -mt-12" />
+        <hr className="section-sep mb-20" />
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <p className="font-cormorant text-[#F5D060] italic text-lg mb-3 text-glow-gold">свяжитесь с нами</p>
@@ -75,16 +75,13 @@ export default function Index() {
               { icon: "Globe", label: "Где найти", value: "Ищите DICKFON в сети", sub: "Интернет-магазин" },
               { icon: "Mail", label: "Email", value: "dickfon88@gmail.com", sub: "Ответим быстро" },
             ].map((c) => (
-              <div
-                key={c.label}
-                className="contact-card p-6 text-center"
-              >
+              <div key={c.label} className="contact-card p-6 text-center">
                 <div className="icon-bubble w-12 h-12 flex items-center justify-center mx-auto mb-4">
                   <Icon name={c.icon} size={20} className="text-[#F5D060]" />
                 </div>
-                <p className="font-oswald text-xs uppercase tracking-widest text-white/35 mb-1">{c.label}</p>
+                <p className="font-oswald text-xs uppercase tracking-widest text-white/30 mb-1">{c.label}</p>
                 <p className="font-rubik text-white text-base mb-1">{c.value}</p>
-                <p className="font-rubik text-white/35 text-sm">{c.sub}</p>
+                <p className="font-rubik text-white/32 text-sm">{c.sub}</p>
               </div>
             ))}
           </div>
@@ -93,7 +90,7 @@ export default function Index() {
 
       {/* FOOTER */}
       <footer className="footer-glass py-8 px-6 text-center">
-        <p className="font-rubik text-white/25 text-sm">
+        <p className="font-rubik text-white/22 text-sm">
           Вся информация на сайте охраняется авторским правом, копирование запрещено
         </p>
       </footer>

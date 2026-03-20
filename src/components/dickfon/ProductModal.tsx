@@ -16,9 +16,9 @@ export default function ProductModal({ product, onClose, onOrder }: ProductModal
       <div
         className="absolute inset-0"
         style={{
-          background: "rgba(5, 2, 12, 0.75)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
+          background: "rgba(4, 2, 10, 0.82)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
         }}
       />
       <div
@@ -32,20 +32,26 @@ export default function ProductModal({ product, onClose, onOrder }: ProductModal
           <Icon name="X" size={18} className="text-white/70" />
         </button>
 
+        {/* Шапка карточки */}
         <div
           className="h-52 rounded-t-[30px] flex items-center justify-center relative overflow-hidden"
           style={{
-            background: `radial-gradient(ellipse at 40% 40%, ${product.color}35 0%, ${product.color}10 40%, transparent 75%)`,
+            background: `radial-gradient(ellipse at 45% 40%, ${product.color}30 0%, ${product.color}08 50%, transparent 80%)`,
           }}
         >
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%)",
+              background: "linear-gradient(180deg, rgba(255,255,255,0.07) 0%, transparent 60%)",
             }}
           />
-          <span className="text-7xl relative z-10" style={{ filter: "drop-shadow(0 0 30px rgba(255,255,255,0.2))" }}>🎤</span>
-          <span className="badge-glass absolute top-4 left-4">
+          <span
+            className="text-7xl relative z-10"
+            style={{ filter: "drop-shadow(0 0 28px rgba(255,255,255,0.18))" }}
+          >
+            🎤
+          </span>
+          <span className="badge-glass absolute top-4 left-4 z-10">
             {product.badge}
           </span>
         </div>
@@ -56,27 +62,25 @@ export default function ProductModal({ product, onClose, onOrder }: ProductModal
           </p>
           <h2
             className="font-oswald text-3xl uppercase tracking-wide text-white mb-1"
-            style={{ textShadow: "0 0 30px rgba(255,255,255,0.1)" }}
+            style={{ textShadow: "0 0 28px rgba(255,255,255,0.1)" }}
           >
             {product.seoTitle}
           </h2>
-          <p className="font-rubik text-white/45 text-sm mb-6">{product.volume}</p>
+          <p className="font-rubik text-white/40 text-sm mb-6">{product.volume}</p>
 
-          <div className="font-rubik text-white/70 text-base leading-relaxed mb-8 whitespace-pre-line">
+          <div className="font-rubik text-white/68 text-base leading-relaxed mb-8 whitespace-pre-line">
             {product.description}
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pt-4"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
             <span
               className="font-oswald text-3xl text-[#F5D060]"
-              style={{ textShadow: "0 0 24px rgba(245,208,96,0.45)" }}
+              style={{ textShadow: "0 0 20px rgba(245,208,96,0.4)" }}
             >
               {product.price}
             </span>
-            <button
-              onClick={onOrder}
-              className="btn-liquid"
-            >
+            <button onClick={onOrder} className="btn-liquid">
               Заказать
             </button>
           </div>
