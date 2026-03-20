@@ -85,6 +85,7 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://cdn.poehali.dev/projects/ddbb85d8-7b82-4154-9714-085bdb6c3887/bucket/6ece2cfc-03c4-4a65-bdd6-c9177dcb99a7.jpg",
       "https://cdn.poehali.dev/projects/ddbb85d8-7b82-4154-9714-085bdb6c3887/bucket/18c9e032-59f0-44a0-86d4-32a3461eac50.png",
+      "https://cdn.poehali.dev/projects/ddbb85d8-7b82-4154-9714-085bdb6c3887/bucket/c5f2b273-5c8b-4cdd-86f1-d504040d67b3.png",
     ],
   },
   {
