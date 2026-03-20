@@ -29,7 +29,7 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#1a0a2e] text-white overflow-x-hidden">
+    <div className="min-h-screen text-white overflow-x-hidden relative" style={{ background: "#0d0618" }}>
       <Helmet>
         <title>DICKFON — Самый необычный микрофон | Купить микрофон в виде члена</title>
         <meta name="description" content="Микрофон в форме члена DICKFON — лучший подарок на мальчишник, девичник, корпоратив. Модели для караоке, петличка для блогеров и эксклюзив на заказ. Заказать по телефону +7 (993) 103-07-83." />
@@ -39,6 +39,16 @@ export default function Index() {
         <meta property="og:url" content="https://dickfon.ru/" />
         <meta property="og:type" content="website" />
       </Helmet>
+
+      {/* Animated liquid background */}
+      <div className="liquid-bg">
+        <div className="liquid-blob liquid-blob-1" />
+        <div className="liquid-blob liquid-blob-2" />
+        <div className="liquid-blob liquid-blob-3" />
+        <div className="liquid-blob liquid-blob-4" />
+        <div className="liquid-blob liquid-blob-5" />
+      </div>
+
       <Navbar items={navItems} />
 
       <ProductsSection
@@ -48,14 +58,15 @@ export default function Index() {
       />
 
       {/* CONTACTS */}
-      <section id="contacts-section" ref={contactsRef} className="py-24 px-6 border-t border-white/10">
+      <section id="contacts-section" ref={contactsRef} className="py-24 px-6 relative">
+        <hr className="section-sep mb-24 -mt-12" />
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <p className="font-cormorant text-[#F5D060] italic text-lg mb-3">свяжитесь с нами</p>
-            <h2 className="font-oswald text-5xl md:text-6xl uppercase tracking-tight text-white">
+            <p className="font-cormorant text-[#F5D060] italic text-lg mb-3 text-glow-gold">свяжитесь с нами</p>
+            <h2 className="font-oswald text-5xl md:text-6xl uppercase tracking-tight text-white text-glow-white">
               Контакты
             </h2>
-            <div className="w-16 h-px bg-[#F5D060] mx-auto mt-6" />
+            <div className="gold-divider" />
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -66,14 +77,14 @@ export default function Index() {
             ].map((c) => (
               <div
                 key={c.label}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:border-[#F5D060]/30 transition-all"
+                className="contact-card p-6 text-center"
               >
-                <div className="w-12 h-12 bg-[#F5D060]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="icon-bubble w-12 h-12 flex items-center justify-center mx-auto mb-4">
                   <Icon name={c.icon} size={20} className="text-[#F5D060]" />
                 </div>
-                <p className="font-oswald text-xs uppercase tracking-widest text-white/40 mb-1">{c.label}</p>
+                <p className="font-oswald text-xs uppercase tracking-widest text-white/35 mb-1">{c.label}</p>
                 <p className="font-rubik text-white text-base mb-1">{c.value}</p>
-                <p className="font-rubik text-white/40 text-sm">{c.sub}</p>
+                <p className="font-rubik text-white/35 text-sm">{c.sub}</p>
               </div>
             ))}
           </div>
@@ -81,8 +92,8 @@ export default function Index() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/10 py-8 px-6 text-center">
-        <p className="font-rubik text-white/30 text-sm">
+      <footer className="footer-glass py-8 px-6 text-center">
+        <p className="font-rubik text-white/25 text-sm">
           Вся информация на сайте охраняется авторским правом, копирование запрещено
         </p>
       </footer>

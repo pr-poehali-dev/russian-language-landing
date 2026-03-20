@@ -24,11 +24,11 @@ export default function Navbar({ items }: NavbarProps) {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a0a2e]/90 backdrop-blur-md border-b border-white/10">
+    <nav className="glass-nav fixed top-0 left-0 right-0 z-50">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <button
           onClick={() => handleClick(items[0])}
-          className="font-oswald text-xl tracking-widest text-[#F5D060] uppercase hover:opacity-80 transition-opacity"
+          className="font-oswald text-xl tracking-widest text-[#F5D060] uppercase hover:opacity-80 transition-opacity text-glow-gold"
         >
           DICKFON
         </button>
@@ -38,7 +38,7 @@ export default function Navbar({ items }: NavbarProps) {
             <button
               key={item.label}
               onClick={() => handleClick(item)}
-              className="font-rubik text-sm text-white/70 hover:text-[#F5D060] transition-colors uppercase tracking-widest"
+              className="nav-link font-rubik text-sm text-white/70 hover:text-[#F5D060] transition-colors uppercase tracking-widest"
             >
               {item.label}
             </button>
@@ -46,7 +46,7 @@ export default function Navbar({ items }: NavbarProps) {
         </div>
 
         <button
-          className="md:hidden text-white/70 hover:text-white"
+          className="md:hidden text-white/60 hover:text-white transition-colors"
           onClick={() => setNavOpen(!navOpen)}
         >
           <Icon name={navOpen ? "X" : "Menu"} size={22} />
@@ -54,7 +54,14 @@ export default function Navbar({ items }: NavbarProps) {
       </div>
 
       {navOpen && (
-        <div className="md:hidden bg-[#1a0a2e] border-t border-white/10 px-6 py-4 flex flex-col gap-4">
+        <div
+          className="md:hidden border-t border-white/10 px-6 py-5 flex flex-col gap-5"
+          style={{
+            background: "rgba(13, 6, 24, 0.92)",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+          }}
+        >
           {items.map((item) => (
             <button
               key={item.label}
