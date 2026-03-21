@@ -67,7 +67,7 @@ export default function ProductPage() {
       <Navbar items={navItems} />
 
       <div className="pt-24 pb-20 px-6 max-w-5xl mx-auto relative z-10">
-        <button onClick={() => navigate(-1)} className="btn-capsule btn-capsule-clear mb-10">
+        <button onClick={() => navigate("/")} className="btn-capsule btn-capsule-clear mb-10">
           <Icon name="ArrowLeft" size={16} />
           Назад
         </button>
