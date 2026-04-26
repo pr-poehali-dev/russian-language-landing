@@ -31,8 +31,8 @@ export default function Index() {
   return (
     <div className="min-h-screen text-white overflow-x-hidden relative" style={{ background: "#080510" }}>
       <Helmet>
-        <title>DICKFON — Самый необычный микрофон | Купить микрофон в виде члена</title>
-        <meta name="description" content="Микрофон в форме члена DICKFON — лучший подарок на мальчишник, девичник, корпоратив. Модели для караоке, петличка для блогеров и эксклюзив на заказ. Заказать по телефону +7 (993) 103-07-83." />
+        <title>DICKFON — Самый необычный микрофон в России | Три модели в наличии</title>
+        <meta name="description" content="Купите DICKFON — микрофон в виде мужского достоинства для вечеринок, блогинга и корпоративов. Модели: DICKFON Karaoke, Петличка, Эксклюзив на заказ. Доставка по всей России. Звоните +7 (993) 103-07-83." />
         <link rel="canonical" href="https://dickfon.ru/" />
         <meta property="og:title" content="DICKFON — Самый необычный микрофон" />
         <meta property="og:description" content="Микрофон в форме члена — лучший подарок на вечеринку. Модели для караоке, петличка, эксклюзив на заказ." />
@@ -71,8 +71,8 @@ export default function Index() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: "Phone", label: "Телефон", value: "+7 (993) 103-07-83", sub: "Круглосуточно, без выходных" },
-              { icon: "Globe", label: "Где найти", value: "Ищите DICKFON в сети", sub: "Интернет-магазин" },
+              { icon: "Phone", label: "Телефон", value: "+7 (993) 103-07-83", sub: "Пишите в любой мессенджер" },
+              { icon: "Globe", label: "Где найти", value: "Ищите DICKFON в социальных сетях", sub: "ВКонтакте, Telegram, Instagram" },
               { icon: "Mail", label: "Email", value: "dickfon88@gmail.com", sub: "Ответим быстро" },
             ].map((c) => (
               <div key={c.label} className="contact-card p-6 text-center">
