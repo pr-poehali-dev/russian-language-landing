@@ -72,7 +72,7 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: "Phone", label: "Телефон", value: "+7 (993) 103-07-83", sub: "Пишите в любой мессенджер" },
-              { icon: "Globe", label: "Где найти", value: "Ищите DICKFON в социальных сетях", sub: "ВКонтакте, Telegram, Instagram" },
+              { icon: "Globe", label: "Где найти", value: "Ищите DICKFON в социальных сетях", sub: "" },
               { icon: "Mail", label: "Email", value: "dickfon88@gmail.com", sub: "Ответим быстро" },
             ].map((c) => (
               <div key={c.label} className="contact-card p-6 text-center">
