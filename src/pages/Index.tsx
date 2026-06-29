@@ -31,8 +31,8 @@ export default function Index() {
   return (
     <div className="min-h-screen text-white overflow-x-hidden relative" style={{ background: "#080510" }}>
       <Helmet>
-        <title>DICKFON — Самый необычный микрофон в России | Три модели в наличии</title>
-        <meta name="description" content="Купите DICKFON — микрофон в виде мужского достоинства для вечеринок, блогинга и корпоративов. Модели: DICKFON Karaoke, Петличка, Эксклюзив на заказ. Доставка по всей России. Звоните +7 (993) 103-07-83." />
+        <title>DICKFON — Официальный сайт | Микрофон в виде члена</title>
+        <meta name="description" content="DICKFON — официальный сайт. Микрофон в форме мужского достоинства: модели для караоке, петличка для блогеров, эксклюзив на заказ. Заказать по +7 (993) 103-07-83." />
         <link rel="canonical" href="https://dickfon.ru/" />
         <meta property="og:title" content="DICKFON — Самый необычный микрофон" />
         <meta property="og:description" content="Микрофон в форме члена — лучший подарок на вечеринку. Модели для караоке, петличка, эксклюзив на заказ." />
