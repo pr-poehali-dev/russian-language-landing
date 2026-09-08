@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -10,7 +10,7 @@ import Index from "./pages/Index";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
 import AgeGate, { AgeDenied } from "@/components/dickfon/AgeGate";
-import { DAYS, MONTHS, YEARS } from "@/components/dickfon/data";
+import { DAYS, YEARS } from "@/components/dickfon/data";
 
 const queryClient = new QueryClient();
 
@@ -38,23 +38,31 @@ function AgeGuard({ children }: { children: React.ReactNode }) {
     }
   };
 
+  useEffect(() => {
+    document.body.style.overflow = !ageVerified && !ageDenied ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [ageVerified, ageDenied]);
+
   if (ageDenied) return <AgeDenied />;
 
-  if (!ageVerified) {
-    return (
-      <AgeGate
-        dayIndex={dayIndex}
-        monthIndex={monthIndex}
-        yearIndex={yearIndex}
-        onDayChange={setDayIndex}
-        onMonthChange={setMonthIndex}
-        onYearChange={setYearIndex}
-        onConfirm={handleAgeCheck}
-      />
-    );
-  }
-
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      {!ageVerified && (
+        <div className="fixed inset-0 z-[9999]">
+          <AgeGate
+            dayIndex={dayIndex}
+            monthIndex={monthIndex}
+            yearIndex={yearIndex}
+            onDayChange={setDayIndex}
+            onMonthChange={setMonthIndex}
+            onYearChange={setYearIndex}
+            onConfirm={handleAgeCheck}
+          />
+        </div>
+      )}
+    </>
+  );
 }
 
 const App = () => (
