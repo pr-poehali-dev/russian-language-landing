@@ -49,7 +49,7 @@ function AgeGuard({ children }: { children: React.ReactNode }) {
     <>
       {children}
       {!ageVerified && (
-        <div className="fixed inset-0 z-[9999]">
+        <div className="fixed inset-0 z-[9999] overflow-y-auto" style={{ background: "#080510" }}>
           <AgeGate
             dayIndex={dayIndex}
             monthIndex={monthIndex}
