@@ -37,7 +37,7 @@ export default function ProductsSection({ homeRef, productsRef, onProductClick }
             </span>
           </h1>
           <p className="font-rubik text-white/55 text-lg md:text-xl max-w-lg mx-auto mb-12">
-            Идеальный подарок для мальчишника, девичника, корпоратива или Дня рождения. Взорви вечеринку с DICKFON!
+            Идеальный подарок для девичника, корпоратива или Дня рождения. Взорви вечеринку с DICKFON!
           </p>
           <button
             onClick={() => productsRef.current?.scrollIntoView({ behavior: "smooth" })}
