@@ -1,25 +1,18 @@
-
 import { useState, useEffect } from "react";
-import { HelmetProvider } from "react-helmet-async";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import ProductPage from "./pages/ProductPage";
-import NotFound from "./pages/NotFound";
+import type { ReactNode } from "react";
 import AgeGate, { AgeDenied } from "@/components/dickfon/AgeGate";
 import { DAYS, YEARS } from "@/components/dickfon/data";
 
-const queryClient = new QueryClient();
-
-function AgeGuard({ children }: { children: React.ReactNode }) {
-  const [ageVerified, setAgeVerified] = useState(() => sessionStorage.getItem("ageVerified") === "true");
+export default function AgeGuard({ children }: { children: ReactNode }) {
+  const [ageVerified, setAgeVerified] = useState(false);
   const [ageDenied, setAgeDenied] = useState(false);
   const [dayIndex, setDayIndex] = useState(0);
   const [monthIndex, setMonthIndex] = useState(0);
   const [yearIndex, setYearIndex] = useState(10);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("ageVerified") === "true") setAgeVerified(true);
+  }, []);
 
   const handleAgeCheck = () => {
     const d = DAYS[dayIndex];
@@ -64,26 +57,3 @@ function AgeGuard({ children }: { children: React.ReactNode }) {
     </>
   );
 }
-
-const App = () => (
-  <HelmetProvider>
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AgeGuard>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/product/:slug" element={<ProductPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AgeGuard>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-  </HelmetProvider>
-);
-
-export default App;

@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 
 interface NavItem {
   label: string;
-  ref?: React.RefObject<HTMLElement>;
+  ref?: React.RefObject<HTMLElement | null>;
   onClick?: () => void;
 }
 

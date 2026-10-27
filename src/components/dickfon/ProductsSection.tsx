@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import { PRODUCTS, Product } from "./data";
 
@@ -10,8 +10,8 @@ const CARD_GLOW: Record<number, string> = {
 };
 
 interface ProductsSectionProps {
-  homeRef: React.RefObject<HTMLElement>;
-  productsRef: React.RefObject<HTMLElement>;
+  homeRef: React.RefObject<HTMLElement | null>;
+  productsRef: React.RefObject<HTMLElement | null>;
   onProductClick: (id: number) => void;
 }
 

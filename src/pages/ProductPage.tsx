@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { useParams, useNavigate } from "@/lib/router-compat";
 import { PRODUCTS } from "@/components/dickfon/data";
 import Navbar from "@/components/dickfon/Navbar";
 import Icon from "@/components/ui/icon";
@@ -41,22 +40,10 @@ export default function ProductPage() {
     );
   }
 
-  const productUrl = `https://dickfon.ru/product/${product.slug}`;
   const allImages = product.images ?? (product.image ? [product.image] : []);
 
   return (
     <div className="min-h-screen text-white overflow-x-hidden relative" style={{ background: "#080510" }}>
-      <Helmet>
-        <title>{product.seoTitle}</title>
-        <meta name="description" content={product.seoDescription} />
-        <link rel="canonical" href={productUrl} />
-        <meta property="og:title" content={product.seoTitle} />
-        <meta property="og:description" content={product.seoDescription} />
-        <meta property="og:url" content={productUrl} />
-        <meta property="og:type" content="product" />
-        {product.image && <meta property="og:image" content={product.image} />}
-      </Helmet>
-
       <div className="liquid-bg">
         <div className="liquid-blob liquid-blob-1" />
         <div className="liquid-blob liquid-blob-2" />
